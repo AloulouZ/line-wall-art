@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINE WALL ART — Sculptures Murales</title>
+  <title>LINE WALL ART — Sculptures Murales 3D</title>
   <style>
     /* ============================================
        APPLE DESIGN SYSTEM — LINE WALL ART
+       Inspired by CraftivaArt — Organized by Themes
        ============================================ */
 
     :root {
@@ -83,7 +84,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
     }
 
@@ -255,7 +256,7 @@
     }
 
     /* ============================================
-       COLLECTION — Light gray bg, product grid
+       COMMON — Section styles
        ============================================ */
     .section {
       padding: 100px 24px;
@@ -300,7 +301,133 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
-    .product-grid {
+    /* ============================================
+       THEMES / COLLECTIONS — CraftivaArt style
+       Grid of themed collections
+       ============================================ */
+    .themes-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .theme-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-card:hover {
+      transform: scale(1.02);
+    }
+
+    .theme-card.full-width {
+      grid-column: span 2;
+      aspect-ratio: 21 / 9;
+    }
+
+    .theme-card-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-card-bg-geometrique {
+      background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    }
+
+    .theme-card-bg-organique {
+      background: linear-gradient(135deg, #f5f0e8 0%, #d4c5a9 100%);
+    }
+
+    .theme-card-bg-abstrait {
+      background: linear-gradient(135deg, #2c2c2e 0%, #48484a 100%);
+    }
+
+    .theme-card-bg-nature {
+      background: linear-gradient(135deg, #e8f0e8 0%, #a8c5a0 100%);
+    }
+
+    .theme-card-bg-portrait {
+      background: linear-gradient(135deg, #f0e6e6 0%, #c9b1b1 100%);
+    }
+
+    /* Decorative SVG patterns inside theme cards */
+    .theme-icon {
+      width: 80px;
+      height: 80px;
+      opacity: 0.3;
+      margin-bottom: 16px;
+    }
+
+    .theme-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+    }
+
+    .theme-card-content h3 {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .theme-card-white h3,
+    .theme-card-white p {
+      color: var(--white);
+    }
+
+    .theme-card-light h3 {
+      color: var(--near-black);
+    }
+
+    .theme-card-light p {
+      color: var(--black-80);
+    }
+
+    .theme-card p {
+      font-size: 15px;
+      opacity: 0.7;
+      line-height: 1.4;
+    }
+
+    .theme-card .theme-count {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 980px;
+      letter-spacing: 0;
+    }
+
+    .theme-card-white .theme-count {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+    }
+
+    .theme-card-light .theme-count {
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--near-black);
+    }
+
+    /* ============================================
+       PRODUCT GRID — Within theme sections
+       ============================================ */
+    .theme-product-grid {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
@@ -323,12 +450,11 @@
 
     .product-image {
       width: 100%;
-      aspect-ratio: 1 / 1.1;
+      aspect-ratio: 1 / 1;
       background: var(--light-gray);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
       overflow: hidden;
     }
 
@@ -356,42 +482,109 @@
     }
 
     .product-info {
-      padding: 24px;
+      padding: 20px;
     }
 
     .product-info h3 {
-      font-size: 21px;
+      font-size: 17px;
       font-weight: 600;
-      line-height: 1.19;
-      letter-spacing: 0.01em;
-      margin-bottom: 6px;
+      line-height: 1.2;
+      letter-spacing: -0.1px;
+      margin-bottom: 4px;
       color: var(--near-black);
     }
 
     .product-info .product-desc {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--black-80);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .product-info .product-price {
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--near-black);
     }
 
-    /* Featured product — larger */
-    .product-featured {
-      grid-column: span 2;
-      grid-row: span 2;
+    /* ============================================
+       FEATURED PRODUCT — Large hero product
+       ============================================ */
+    .featured-product {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--black);
+      border-radius: 18px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
 
-    .product-featured .product-image {
+    .featured-image {
       aspect-ratio: 1 / 1;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .featured-image-placeholder {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .featured-content {
+      padding: 64px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-label {
+      font-size: 13px;
+      color: var(--link-blue-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .featured-content h3 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.4px;
+      margin-bottom: 16px;
+    }
+
+    .featured-content p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .featured-specs {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .spec-item {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .spec-item strong {
+      display: block;
+      font-size: 19px;
+      color: var(--white);
+      margin-bottom: 2px;
     }
 
     /* ============================================
-       PROCESS / SAVOIR-FAIRE — Dark bg
+       PROCESS / HOW IT WORKS
        ============================================ */
     .process-grid {
       max-width: 1024px;
@@ -430,7 +623,7 @@
     }
 
     /* ============================================
-       ABOUT / BANNER — Full width dark
+       ABOUT / BANNER — Full width
        ============================================ */
     .banner {
       background: var(--black);
@@ -460,7 +653,7 @@
     }
 
     /* ============================================
-       CONTACT — Light bg
+       CONTACT
        ============================================ */
     .contact-inner {
       max-width: 680px;
@@ -497,420 +690,685 @@
       color: var(--apple-blue-hover);
     }
 
-    .contact-form {
-      margin-top: 48px;
+    /* ============================================
+       REVIEWS / SOCIAL PROOF
+       ============================================ */
+    .reviews-grid {
+      max-width: 1024px;
+      margin: 0 auto;
       display: grid;
-      gap: 16px;
-      text-align: left;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 12px;
-      font-size: 17px;
-      font-family: inherit;
+    .review-card {
       background: var(--white);
+      border-radius: 18px;
+      padding: 32px;
+    }
+
+    .review-stars {
+      color: #f5a623;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      font-size: 15px;
       color: var(--near-black);
-      transition: border-color 0.2s;
-      outline: none;
+      line-height: 1.5;
+      margin-bottom: 16px;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--apple-blue);
-    }
-
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
+    .review-author {
+      font-size: 13px;
       color: var(--black-48);
-    }
-
-    .contact-form textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .contact-form .btn-submit {
-      width: 100%;
-      padding: 14px 24px;
-      background: var(--apple-blue);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      font-size: 17px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.2s;
-      letter-spacing: -0.2px;
-    }
-
-    .contact-form .btn-submit:hover {
-      background: var(--apple-blue-hover);
     }
 
     /* ============================================
-       FOOTER — Minimal dark
+       FOOTER
        ============================================ */
     .footer {
-      background: var(--light-gray);
-      padding: 32px 24px;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      background: var(--black);
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .footer-inner {
-      max-width: 1024px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .footer-left {
+    .footer p {
       font-size: 12px;
-      color: var(--black-48);
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 8px;
     }
 
     .footer-links {
       display: flex;
+      justify-content: center;
       gap: 24px;
-      list-style: none;
+      margin-top: 16px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       font-size: 12px;
-      color: var(--black-80);
+      color: rgba(255, 255, 255, 0.5);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--near-black);
-    }
-
-    /* ============================================
-       SCROLL ANIMATIONS
-       ============================================ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      color: var(--white);
     }
 
     /* ============================================
        RESPONSIVE
        ============================================ */
-    @media (max-width: 1024px) {
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .product-featured {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-      .product-featured .product-image {
-        aspect-ratio: 16 / 9;
-      }
-    }
-
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
+
       .nav-hamburger {
         display: flex;
       }
-      .process-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-      .product-grid {
+
+      .themes-grid {
         grid-template-columns: 1fr;
       }
-      .product-featured {
+
+      .theme-card.full-width {
         grid-column: span 1;
+        aspect-ratio: 16 / 10;
       }
-      .section {
-        padding: 72px 20px;
+
+      .theme-card {
+        aspect-ratio: 16 / 10;
       }
-      .hero {
-        padding: 100px 20px 60px;
+
+      .theme-product-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .banner {
-        padding: 100px 20px;
+
+      .featured-product {
+        grid-template-columns: 1fr;
       }
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
+
+      .featured-content {
+        padding: 40px 24px;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 480px) {
+      .theme-product-grid {
+        grid-template-columns: 1fr;
+      }
+
       .process-grid {
         grid-template-columns: 1fr;
       }
-      .hero-ctas {
+
+      .featured-specs {
         flex-direction: column;
+        gap: 16px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Line Wall Art</a>
+      <a href="#" class="nav-logo">LINE WALL ART</a>
       <ul class="nav-links">
-        <li><a href="#collection">Collection</a></li>
-        <li><a href="#savoir-faire">Savoir-faire</a></li>
+        <li><a href="#themes">Thèmes</a></li>
+        <li><a href="#featured">À la une</a></li>
+        <li><a href="#process">Savoir-faire</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Commander</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Commander</a>
       <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#collection" onclick="toggleMenu()">Collection</a>
-    <a href="#savoir-faire" onclick="toggleMenu()">Savoir-faire</a>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#themes" onclick="closeMenu()">Thèmes</a>
+    <a href="#featured" onclick="closeMenu()">À la une</a>
+    <a href="#process" onclick="closeMenu()">Savoir-faire</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
 
-  <!-- ========== HERO ========== -->
+  <!-- ============================================
+       HERO
+       ============================================ -->
   <section class="hero">
-    <p class="hero-label fade-in">LINE WALL ART</p>
-    <h1 class="fade-in">Des sculptures<br>qui parlent à<br>ton mur.</h1>
-    <p class="hero-subtitle fade-in">
-      Pièces uniques imprimées en 3D, finies à la main et montées dans un cadre sur mesure. Blanc ou noir. Minimaliste. Intemporel.
+    <p class="hero-label">Sculptures murales 3D imprimées en PLA</p>
+    <h1>Vos murs méritent<br>une œuvre d'art.</h1>
+    <p class="hero-subtitle">
+      Des sculptures murales monolithiques en PLA, imprimées et montées avec précision. Blanc pur ou noir profond. Chaque pièce est unique.
     </p>
-    <div class="hero-ctas fade-in">
-      <a href="#collection" class="btn-pill btn-primary">Découvrir la collection</a>
-      <a href="#contact" class="btn-pill btn-link">Nous contacter <span class="arrow">&#8594;</span></a>
+    <div class="hero-ctas">
+      <a href="#themes" class="btn-pill btn-primary">Découvrir les thèmes</a>
+      <a href="#contact" class="btn-pill btn-link">Commander sur mesure <span class="arrow">›</span></a>
     </div>
   </section>
 
-  <!-- ========== COLLECTION ========== -->
-  <section class="section section-light" id="collection">
-    <div class="section-header fade-in">
-      <h2>Collection</h2>
-      <p>Chaque pièce est unique. Chaque mur raconte une histoire.</p>
+  <!-- ============================================
+       THEMES / COLLECTIONS — CraftivaArt style
+       ============================================ -->
+  <section class="section" id="themes">
+    <div class="section-header">
+      <h2>Explorer par thème</h2>
+      <p>5 univers, une même passion pour la sculpture murale. Trouvez le style qui résonne avec votre espace.</p>
     </div>
-    <div class="product-grid">
 
-      <!-- Featured product -->
-      <div class="product-card product-featured fade-in">
-        <div class="product-image">
-          <div class="product-image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Votre photo ici</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>Pièce phare</h3>
-          <p class="product-desc">Description de la pièce — taille, matière, style</p>
-          <p class="product-price">À partir de 89 €</p>
+    <div class="themes-grid">
+      <!-- Theme 1: Géométrique — Large -->
+      <div class="theme-card full-width theme-card-light" onclick="scrollToTheme('geometrique')">
+        <div class="theme-card-bg theme-card-bg-geometrique"></div>
+        <div class="theme-card-content">
+          <h3>Géométrique</h3>
+          <p>Cubes, hexagones, triangles — rythmes et pavages</p>
+          <span class="theme-count">8 œuvres</span>
         </div>
       </div>
 
-      <!-- Product 2 -->
-      <div class="product-card fade-in">
-        <div class="product-image">
-          <div class="product-image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Votre photo ici</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>Titre de l'œuvre</h3>
-          <p class="product-desc">Description courte</p>
-          <p class="product-price">À partir de 49 €</p>
+      <!-- Theme 2: Organique -->
+      <div class="theme-card theme-card-light" onclick="scrollToTheme('organique')">
+        <div class="theme-card-bg theme-card-bg-organique"></div>
+        <div class="theme-card-content">
+          <h3>Organique</h3>
+          <p>Formes fluides, vagues, courbes naturelles</p>
+          <span class="theme-count">6 œuvres</span>
         </div>
       </div>
 
-      <!-- Product 3 -->
-      <div class="product-card fade-in">
-        <div class="product-image">
-          <div class="product-image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Votre photo ici</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>Titre de l'œuvre</h3>
-          <p class="product-desc">Description courte</p>
-          <p class="product-price">À partir de 59 €</p>
+      <!-- Theme 3: Abstrait -->
+      <div class="theme-card theme-card-light" onclick="scrollToTheme('abstrait')">
+        <div class="theme-card-bg theme-card-bg-abstrait"></div>
+        <div class="theme-card-content">
+          <h3>Abstrait</h3>
+          <p>Sculptures non figuratives, formes libres</p>
+          <span class="theme-count">5 œuvres</span>
         </div>
       </div>
 
-      <!-- Product 4 -->
-      <div class="product-card fade-in">
-        <div class="product-image">
-          <div class="product-image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Votre photo ici</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>Titre de l'œuvre</h3>
-          <p class="product-desc">Description courte</p>
-          <p class="product-price">À partir de 69 €</p>
+      <!-- Theme 4: Nature -->
+      <div class="theme-card theme-card-light" onclick="scrollToTheme('nature')">
+        <div class="theme-card-bg theme-card-bg-nature"></div>
+        <div class="theme-card-content">
+          <h3>Nature</h3>
+          <p>Plantes stylisées, feuilles, fleurs</p>
+          <span class="theme-count">4 œuvres</span>
         </div>
       </div>
 
-      <!-- Product 5 -->
-      <div class="product-card fade-in">
-        <div class="product-image">
-          <div class="product-image-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>Votre photo ici</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>Titre de l'œuvre</h3>
-          <p class="product-desc">Description courte</p>
-          <p class="product-price">À partir de 39 €</p>
+      <!-- Theme 5: Portrait -->
+      <div class="theme-card theme-card-light" onclick="scrollToTheme('portrait')">
+        <div class="theme-card-bg theme-card-bg-portrait"></div>
+        <div class="theme-card-content">
+          <h3>Portrait</h3>
+          <p>Visages sculpturaux, bustes</p>
+          <span class="theme-count">3 œuvres</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ========== BANNER CTA ========== -->
-  <section class="banner">
-    <h2 class="fade-in">Tu as une idée.<br>On la crée.</h2>
-    <p class="fade-in">Sur mesure, sur ton mur, dans ta couleur. Blanc ou noir. C'est toi qui décides.</p>
-    <a href="#contact" class="btn-pill btn-primary fade-in">Demander un devis <span class="arrow">&#8594;</span></a>
+  <!-- ============================================
+       FEATURED PRODUCT
+       ============================================ -->
+  <section class="section section-dark" id="featured">
+    <div class="section-header">
+      <h2>À la une</h2>
+      <p>Notre pièce phare du moment</p>
+    </div>
+
+    <div class="featured-product">
+      <div class="featured-image">
+        <div class="featured-image-placeholder">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;height:48px;opacity:0.3;margin-bottom:8px;">
+            <rect x="8" y="8" width="32" height="32" rx="4" stroke="white" stroke-width="2"/>
+            <line x1="8" y1="20" x2="40" y2="20" stroke="white" stroke-width="2"/>
+            <line x1="20" y1="8" x2="20" y2="40" stroke="white" stroke-width="2"/>
+          </svg>
+          Photo du produit vedette
+        </div>
+      </div>
+      <div class="featured-content">
+        <span class="featured-label">Nouveau</span>
+        <h3>Vagues — Collection Organique</h3>
+        <p>Une sculpture murale qui capture le mouvement fluide des vagues. Imprimée en PLA blanc, montée en cadre noir. Une pièce maîtresse qui transforme n'importe quel mur.</p>
+        <div class="featured-specs">
+          <div class="spec-item">
+            <strong>60 × 40 cm</strong>
+            Taille standard
+          </div>
+          <div class="spec-item">
+            <strong>PLA</strong>
+            Matériau
+          </div>
+          <div class="spec-item">
+            <strong>Blanc</strong>
+            Finition
+          </div>
+          <div class="spec-item">
+            <strong>À partir de 149 €</strong>
+            Prix
+          </div>
+        </div>
+        <a href="#contact" class="btn-pill btn-primary">Commander</a>
+      </div>
+    </div>
   </section>
 
-  <!-- ========== SAVOIR-FAIRE ========== -->
-  <section class="section section-dark" id="savoir-faire">
-    <div class="section-header fade-in">
+  <!-- ============================================
+       THEME SECTION: Géométrique
+       ============================================ -->
+  <section class="section section-light" id="geometrique">
+    <div class="section-header">
+      <h2>Géométrique</h2>
+      <p>Cubes, hexagones, triangles — des rythmes et pavages qui structurent l'espace mural.</p>
+    </div>
+
+    <div class="theme-product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Pavé Cubique</h3>
+          <p class="product-desc">Cubes en relief, blanc PLA</p>
+          <span class="product-price">À partir de 89 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Hexaondale</h3>
+          <p class="product-desc">Hexagones imbriqués, noir PLA</p>
+          <span class="product-price">À partir de 119 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Réseau Triangulaire</h3>
+          <p class="product-desc">Triangles en relief, blanc PLA</p>
+          <span class="product-price">À partir de 109 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THEME SECTION: Organique
+       ============================================ -->
+  <section class="section" id="organique">
+    <div class="section-header">
+      <h2>Organique</h2>
+      <p>Formes fluides, vagues, courbes naturelles qui apportent douceur et mouvement aux murs.</p>
+    </div>
+
+    <div class="theme-product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Vagues</h3>
+          <p class="product-desc">Courbes fluides, blanc PLA</p>
+          <span class="product-price">À partir de 149 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Flux</h3>
+          <p class="product-desc">Rythmes ondulés, noir PLA</p>
+          <span class="product-price">À partir de 139 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Spirale</h3>
+          <p class="product-desc">Enroulement organique, blanc PLA</p>
+          <span class="product-price">À partir de 129 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THEME SECTION: Abstrait
+       ============================================ -->
+  <section class="section section-light" id="abstrait">
+    <div class="section-header">
+      <h2>Abstrait</h2>
+      <p>Sculptures non figuratives, formes libres qui interrogent l'espace et la lumière.</p>
+    </div>
+
+    <div class="theme-product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Fracture</h3>
+          <p class="product-desc">Lignes brisées, noir PLA</p>
+          <span class="product-price">À partir de 159 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Écho</h3>
+          <p class="product-desc">Strates superposées, blanc PLA</p>
+          <span class="product-price">À partir de 169 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Void</h3>
+          <p class="product-desc">Négatif et plein, noir PLA</p>
+          <span class="product-price">À partir de 179 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THEME SECTION: Nature
+       ============================================ -->
+  <section class="section" id="nature">
+    <div class="section-header">
+      <h2>Nature</h2>
+      <p>Plantes stylisées, feuilles, fleurs — la nature revisitée en sculpture murale.</p>
+    </div>
+
+    <div class="theme-product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Ferme</h3>
+          <p class="product-desc">Frondes de fougère, blanc PLA</p>
+          <span class="product-price">À partir de 119 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Pétale</h3>
+          <p class="product-desc">Pétales empilés, noir PLA</p>
+          <span class="product-price">À partir de 139 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Canopée</h3>
+          <p class="product-desc">Ramification d'arbre, blanc PLA</p>
+          <span class="product-price">À partir de 159 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THEME SECTION: Portrait
+       ============================================ -->
+  <section class="section section-light" id="portrait">
+    <div class="section-header">
+      <h2>Portrait</h2>
+      <p>Visages sculpturaux et bustes abstraits — l'humain réduit à l'essentiel.</p>
+    </div>
+
+    <div class="theme-product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Profil</h3>
+          <p class="product-desc">Visage en coupe, blanc PLA</p>
+          <span class="product-price">À partir de 149 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Relief</h3>
+          <p class="product-desc">Buste géométrique, noir PLA</p>
+          <span class="product-price">À partir de 169 €</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="20" y1="8" x2="20" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+            Photo produit
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Essence</h3>
+          <p class="product-desc">Face abstraite, blanc PLA</p>
+          <span class="product-price">À partir de 179 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROCESS / SAVOIR-FAIRE
+       ============================================ -->
+  <section class="section section-dark" id="process">
+    <div class="section-header">
       <h2>Savoir-faire</h2>
-      <p>De la conception au mur — chaque étape est pensée pour la perfection.</p>
+      <p>De la conception à votre mur, chaque étape est pensée pour la qualité.</p>
     </div>
+
     <div class="process-grid">
-      <div class="process-step fade-in">
+      <div class="process-step">
         <div class="process-number">01</div>
-        <h3>Design</h3>
-        <p>Création numérique de ta sculpture — chaque détail est modélisé pour un rendu 3D parfait.</p>
+        <h3>Conception</h3>
+        <p>Modélisation 3D sur mesure, ajustée à votre espace et vos envies.</p>
       </div>
-      <div class="process-step fade-in">
+      <div class="process-step">
         <div class="process-number">02</div>
-        <h3>Impression 3D</h3>
-        <p>Impression FDM en PLA premium — couche fine pour une surface lisse et un rendu net.</p>
+        <h3>Impression</h3>
+        <p>Impression FDM haute précision en PLA premium, blanc ou noir.</p>
       </div>
-      <div class="process-step fade-in">
+      <div class="process-step">
         <div class="process-number">03</div>
         <h3>Finition</h3>
-        <p> Ponçage, peinture monochrome (blanc ou noir), chaque pièce est finie à la main.</p>
+        <p>Nettoyage, ponçage léger et montage en cadre prêt à accrocher.</p>
       </div>
-      <div class="process-step fade-in">
+      <div class="process-step">
         <div class="process-number">04</div>
-        <h3>Cadre & Montage</h3>
-        <p>Montage dans un cadre sur mesure, prêt à accrocher. Livré avec système de fixation inclus.</p>
+        <h3>Livraison</h3>
+        <p>Emballage protégé, livraison soignée directement chez vous.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
-  <section class="section section-light" id="contact">
-    <div class="contact-inner">
-      <h2 class="fade-in">Contact</h2>
-      <p class="fade-in">Une question ? Un projet ? Une idée de sculpture ? Écris-nous.</p>
-      <a href="mailto:ali.maaref69@gmail.com" class="contact-email fade-in">ali.maaref69@gmail.com</a>
+  <!-- ============================================
+       SOCIAL PROOF / REVIEWS
+       ============================================ -->
+  <section class="section section-light" id="reviews">
+    <div class="section-header">
+      <h2>Ce qu'ils en disent</h2>
+      <p>Nos clients partagent leur expérience.</p>
+    </div>
 
-      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
-        <input type="text" name="name" placeholder="Ton nom" required>
-        <input type="email" name="email" placeholder="Ton email" required>
-        <input type="text" name="subject" placeholder="Sujet">
-        <textarea name="message" placeholder="Ton message..." required></textarea>
-        <button type="submit" class="btn-submit">Envoyer</button>
-      </form>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« La sculpture a transformé notre salon. La qualité d'impression est remarquable et le cadre est très soigné. »</p>
+        <p class="review-author">— Marie L.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« J'ai commandé une pièce sur mesure pour notre bureau. Le résultat dépasse mes attentes. Bravo ! »</p>
+        <p class="review-author">— Karim B.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Un vrai travail d'artiste. La lumière joue magnifiquement avec les reliefs. Client fidèle. »</p>
+        <p class="review-author">— Sophie D.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ============================================
+       BANNER — CTA
+       ============================================ -->
+  <section class="banner">
+    <h2>Une idée de sculpture<br>sur mesure ?</h2>
+    <p>Envoyez-nous votre concept, votre espace, vos envies. On s'occupe du reste.</p>
+    <a href="#contact" class="btn-pill btn-primary">Nous contacter</a>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section class="section" id="contact">
+    <div class="contact-inner">
+      <h2>Contact</h2>
+      <p>Questions, commandes sur mesure ou simplement envie de discuter ?</p>
+      <a href="mailto:line-wall-art@gmail.com" class="contact-email">line-wall-art@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
   <footer class="footer">
-    <div class="footer-inner">
-      <p class="footer-left">&copy; 2026 LINE WALL ART. Tous droits réservés.</p>
-      <ul class="footer-links">
-        <li><a href="#">Mentions légales</a></li>
-        <li><a href="#">CGV</a></li>
-        <li><a href="mailto:ali.maaref69@gmail.com">Contact</a></li>
-      </ul>
+    <div class="footer-logo">LINE WALL ART</div>
+    <p>Sculptures murales 3D imprimées en PLA — Blanc pur ou noir profond</p>
+    <p>© 2026 LINE WALL ART. Tous droits réservés.</p>
+    <div class="footer-links">
+      <a href="#themes">Thèmes</a>
+      <a href="#process">Savoir-faire</a>
+      <a href="#contact">Contact</a>
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
   <script>
     // Mobile menu toggle
     function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
+      document.getElementById('mobileMenu').classList.toggle('active');
     }
 
-    // Scroll animations (Intersection Observer)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('active');
+    }
+
+    // Smooth scroll to theme section
+    function scrollToTheme(theme) {
+      const el = document.getElementById(theme);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Nav background on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 10) {
+        nav.style.background = 'rgba(0, 0, 0, 0.9)';
+      } else {
+        nav.style.background = 'rgba(0, 0, 0, 0.8)';
+      }
     });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Form handler (placeholder — connect to email service later)
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.btn-submit');
-      btn.textContent = 'Envoyé ✓';
-      btn.style.background = '#15be53';
-      setTimeout(() => {
-        btn.textContent = 'Envoyer';
-        btn.style.background = '';
-        e.target.reset();
-      }, 3000);
-    }
   </script>
 
 </body>
