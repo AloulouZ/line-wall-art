@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINE WALL ART — Sculptures Murales</title>
+  <style>
+    /* ============================================
+       APPLE DESIGN SYSTEM — LINE WALL ART
+       ============================================ */
+
+    :root {
+      --black: #000000;
+      --light-gray: #f5f5f7;
+      --near-black: #1d1d1f;
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ED;
+      --link-blue: #0066cc;
+      --link-blue-dark: #2997ff;
+      --white: #ffffff;
+      --black-80: rgba(0, 0, 0, 0.8);
+      --black-48: rgba(0, 0, 0, 0.48);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--near-black);
+      background: var(--white);
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       NAVIGATION — Glass dark sticky
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-inner {
+      max-width: 1024px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-size: 12px;
+      background: var(--apple-blue);
+      color: var(--white);
+      padding: 6px 14px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-weight: 400;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--apple-blue-hover);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 48px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 28px;
+      color: var(--white);
+      text-decoration: none;
+      padding: 16px 0;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+    }
+
+    /* ============================================
+       HERO — Full viewport, black bg
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-label {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--link-blue-dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(17px, 2.5vw, 21px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.38;
+      max-width: 600px;
+      margin-bottom: 32px;
+      letter-spacing: -0.2px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 24px;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary {
+      background: var(--apple-blue);
+      color: var(--white);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--apple-blue-hover);
+    }
+
+    .btn-link {
+      background: transparent;
+      color: var(--link-blue-dark);
+      border: none;
+    }
+
+    .btn-link:hover {
+      text-decoration: underline;
+    }
+
+    .btn-link .arrow {
+      transition: transform 0.2s;
+      font-size: 14px;
+    }
+
+    .btn-link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    /* ============================================
+       COLLECTION — Light gray bg, product grid
+       ============================================ */
+    .section {
+      padding: 100px 24px;
+    }
+
+    .section-light {
+      background: var(--light-gray);
+    }
+
+    .section-dark {
+      background: var(--black);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      margin-bottom: 12px;
+    }
+
+    .section-dark .section-header h2 {
+      color: var(--white);
+    }
+
+    .section-header p {
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.42;
+      color: var(--black-80);
+      max-width: 600px;
+      margin: 0 auto;
+      letter-spacing: -0.2px;
+    }
+
+    .section-dark .section-header p {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .product-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1.1;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image-placeholder {
+      font-size: 14px;
+      color: var(--black-48);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .product-image-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.3;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 24px;
+    }
+
+    .product-info h3 {
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+      color: var(--near-black);
+    }
+
+    .product-info .product-desc {
+      font-size: 14px;
+      color: var(--black-80);
+      margin-bottom: 12px;
+    }
+
+    .product-info .product-price {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--near-black);
+    }
+
+    /* Featured product — larger */
+    .product-featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .product-featured .product-image {
+      aspect-ratio: 1 / 1;
+    }
+
+    /* ============================================
+       PROCESS / SAVOIR-FAIRE — Dark bg
+       ============================================ */
+    .process-grid {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .process-step {
+      text-align: center;
+    }
+
+    .process-number {
+      font-size: 56px;
+      font-weight: 200;
+      color: var(--apple-blue);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .process-step h3 {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .process-step p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.57;
+      letter-spacing: -0.1px;
+    }
+
+    /* ============================================
+       ABOUT / BANNER — Full width dark
+       ============================================ */
+    .banner {
+      background: var(--black);
+      text-align: center;
+      padding: 140px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner h2 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .banner p {
+      font-size: 21px;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.38;
+      letter-spacing: -0.2px;
+    }
+
+    /* ============================================
+       CONTACT — Light bg
+       ============================================ */
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+      margin-bottom: 12px;
+    }
+
+    .contact-inner > p {
+      font-size: 19px;
+      color: var(--black-80);
+      margin-bottom: 40px;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 600;
+      color: var(--apple-blue);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.2s;
+    }
+
+    .contact-email:hover {
+      color: var(--apple-blue-hover);
+    }
+
+    .contact-form {
+      margin-top: 48px;
+      display: grid;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      font-size: 17px;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--near-black);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--apple-blue);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--black-48);
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form .btn-submit {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--apple-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-form .btn-submit:hover {
+      background: var(--apple-blue-hover);
+    }
+
+    /* ============================================
+       FOOTER — Minimal dark
+       ============================================ */
+    .footer {
+      background: var(--light-gray);
+      padding: 32px 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .footer-inner {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      font-size: 12px;
+      color: var(--black-48);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--black-80);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--near-black);
+    }
+
+    /* ============================================
+       SCROLL ANIMATIONS
+       ============================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-featured {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .product-featured .product-image {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-hamburger {
+        display: flex;
+      }
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-featured {
+        grid-column: span 1;
+      }
+      .section {
+        padding: 72px 20px;
+      }
+      .hero {
+        padding: 100px 20px 60px;
+      }
+      .banner {
+        padding: 100px 20px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-ctas {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Line Wall Art</a>
+      <ul class="nav-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#savoir-faire">Savoir-faire</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Commander</a>
+      <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#collection" onclick="toggleMenu()">Collection</a>
+    <a href="#savoir-faire" onclick="toggleMenu()">Savoir-faire</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <p class="hero-label fade-in">LINE WALL ART</p>
+    <h1 class="fade-in">Des sculptures<br>qui parlent à<br>ton mur.</h1>
+    <p class="hero-subtitle fade-in">
+      Pièces uniques imprimées en 3D, finies à la main et montées dans un cadre sur mesure. Blanc ou noir. Minimaliste. Intemporel.
+    </p>
+    <div class="hero-ctas fade-in">
+      <a href="#collection" class="btn-pill btn-primary">Découvrir la collection</a>
+      <a href="#contact" class="btn-pill btn-link">Nous contacter <span class="arrow">&#8594;</span></a>
+    </div>
+  </section>
+
+  <!-- ========== COLLECTION ========== -->
+  <section class="section section-light" id="collection">
+    <div class="section-header fade-in">
+      <h2>Collection</h2>
+      <p>Chaque pièce est unique. Chaque mur raconte une histoire.</p>
+    </div>
+    <div class="product-grid">
+
+      <!-- Featured product -->
+      <div class="product-card product-featured fade-in">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Votre photo ici</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Pièce phare</h3>
+          <p class="product-desc">Description de la pièce — taille, matière, style</p>
+          <p class="product-price">À partir de 89 €</p>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card fade-in">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Votre photo ici</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Titre de l'œuvre</h3>
+          <p class="product-desc">Description courte</p>
+          <p class="product-price">À partir de 49 €</p>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card fade-in">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Votre photo ici</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Titre de l'œuvre</h3>
+          <p class="product-desc">Description courte</p>
+          <p class="product-price">À partir de 59 €</p>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card fade-in">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Votre photo ici</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Titre de l'œuvre</h3>
+          <p class="product-desc">Description courte</p>
+          <p class="product-price">À partir de 69 €</p>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card fade-in">
+        <div class="product-image">
+          <div class="product-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Votre photo ici</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Titre de l'œuvre</h3>
+          <p class="product-desc">Description courte</p>
+          <p class="product-price">À partir de 39 €</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== BANNER CTA ========== -->
+  <section class="banner">
+    <h2 class="fade-in">Tu as une idée.<br>On la crée.</h2>
+    <p class="fade-in">Sur mesure, sur ton mur, dans ta couleur. Blanc ou noir. C'est toi qui décides.</p>
+    <a href="#contact" class="btn-pill btn-primary fade-in">Demander un devis <span class="arrow">&#8594;</span></a>
+  </section>
+
+  <!-- ========== SAVOIR-FAIRE ========== -->
+  <section class="section section-dark" id="savoir-faire">
+    <div class="section-header fade-in">
+      <h2>Savoir-faire</h2>
+      <p>De la conception au mur — chaque étape est pensée pour la perfection.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step fade-in">
+        <div class="process-number">01</div>
+        <h3>Design</h3>
+        <p>Création numérique de ta sculpture — chaque détail est modélisé pour un rendu 3D parfait.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-number">02</div>
+        <h3>Impression 3D</h3>
+        <p>Impression FDM en PLA premium — couche fine pour une surface lisse et un rendu net.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-number">03</div>
+        <h3>Finition</h3>
+        <p> Ponçage, peinture monochrome (blanc ou noir), chaque pièce est finie à la main.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-number">04</div>
+        <h3>Cadre & Montage</h3>
+        <p>Montage dans un cadre sur mesure, prêt à accrocher. Livré avec système de fixation inclus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section section-light" id="contact">
+    <div class="contact-inner">
+      <h2 class="fade-in">Contact</h2>
+      <p class="fade-in">Une question ? Un projet ? Une idée de sculpture ? Écris-nous.</p>
+      <a href="mailto:ali.maaref69@gmail.com" class="contact-email fade-in">ali.maaref69@gmail.com</a>
+
+      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+        <input type="text" name="name" placeholder="Ton nom" required>
+        <input type="email" name="email" placeholder="Ton email" required>
+        <input type="text" name="subject" placeholder="Sujet">
+        <textarea name="message" placeholder="Ton message..." required></textarea>
+        <button type="submit" class="btn-submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-left">&copy; 2026 LINE WALL ART. Tous droits réservés.</p>
+      <ul class="footer-links">
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">CGV</a></li>
+        <li><a href="mailto:ali.maaref69@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+
+    // Scroll animations (Intersection Observer)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form handler (placeholder — connect to email service later)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = 'Envoyé ✓';
+      btn.style.background = '#15be53';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
